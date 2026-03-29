@@ -1,14 +1,14 @@
 /* --- Variables & Reset --- */
 :root {
-    /* Color Palette: Cyber Emerald & Deep Charcoal */
-    --accent-color: #00DB72; /* Vivid but professional neo-green / emerald */
-    --accent-dark: #00B15C;
-    --bg-dark: #0A0A0A;
-    --bg-darker: #050505;
-    --bg-light: #F8F9FA;
-    --text-main: #1A1D20;
-    --text-muted: #5A6268;
-    --text-light: #F8F9FA;
+    /* Color Palette: Elegant Bright Slate & Royal Blue */
+    --accent-color: #2563EB; /* Bright Royal Blue */
+    --accent-dark: #1D4ED8;
+    --bg-dark: #0F172A; /* Slate 900 (Elegant Navy) */
+    --bg-darker: #020617; /* Slate 950 */
+    --bg-light: #F8FAFC; /* Slate 50 (Crisp Bright Silver) */
+    --text-main: #1E293B; /* Slate 800 */
+    --text-muted: #64748B; /* Slate 500 */
+    --text-light: #F8FAFC;
     --white: #FFFFFF;
     
     /* Typography */
@@ -18,6 +18,7 @@
     /* Layout */
     --container-width: 1280px;
     --nav-height: 90px;
+    --hero-offset: 120px;
     --transition-standard: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -120,7 +121,7 @@ p {
     background-color: var(--accent-dark);
     border-color: var(--accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 219, 114, 0.2);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
 }
 
 .btn-outline {
@@ -224,7 +225,7 @@ p {
     height: 100vh;
     min-height: 800px;
     display: flex;
-    padding-top: var(--nav-height);
+    padding-top: var(--hero-offset);
     background-color: var(--bg-light);
     position: relative;
 }
@@ -260,7 +261,8 @@ p {
 }
 
 .hero-title {
-    font-size: 4.8rem;
+    font-size: 3.2rem;
+    line-height: 1.2;
     margin-bottom: 2rem;
 }
 
@@ -367,7 +369,7 @@ p {
 .card-icon {
     font-family: var(--font-heading);
     font-size: 3rem;
-    color: rgba(0, 219, 114, 0.2);
+    color: rgba(37, 99, 235, 0.2);
     margin-bottom: 20px;
     transition: var(--transition-standard);
 }
@@ -516,9 +518,9 @@ p {
 }
 
 .badge {
-    background-color: rgba(0, 219, 114, 0.1);
+    background-color: rgba(37, 99, 235, 0.1);
     color: var(--accent-dark);
-    border: 1px solid rgba(0, 219, 114, 0.3);
+    border: 1px solid rgba(37, 99, 235, 0.3);
     padding: 8px 16px;
     border-radius: 50px;
     font-size: 0.85rem;
@@ -635,7 +637,7 @@ p {
     font-size: 1.8rem;
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 2px solid rgba(0, 219, 114, 0.2);
+    border-bottom: 2px solid rgba(37, 99, 235, 0.2);
 }
 
 .qual-item {
@@ -690,7 +692,7 @@ p {
     left: -100%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 219, 114, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
     transition: 0.6s ease-in-out;
     transform: skewX(-20deg);
     pointer-events: none;
@@ -708,7 +710,7 @@ p {
     opacity: 0;
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     pointer-events: none;
-    background: rgba(0, 219, 114, 0.1);
+    background: rgba(37, 99, 235, 0.1);
     padding: 4px 10px;
     border-radius: 50px;
 }
@@ -769,7 +771,7 @@ p {
 .event-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.06);
-    border-color: rgba(0, 219, 114, 0.3);
+    border-color: rgba(37, 99, 235, 0.3);
 }
 
 .event-date {
@@ -810,7 +812,7 @@ p {
 
 .event-type {
     display: inline-block;
-    background-color: rgba(0, 219, 114, 0.1);
+    background-color: rgba(37, 99, 235, 0.1);
     color: var(--accent-dark);
     padding: 4px 10px;
     border-radius: 4px;
@@ -875,5 +877,124 @@ p {
 .fade-in-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* --- Contact Grid --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 45px 30px;
+    border-radius: 16px;
+    text-align: center;
+    transition: var(--transition-standard);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(37, 99, 235, 0.6);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25);
+}
+
+.contact-card h3 {
+    color: var(--white);
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.contact-card .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Projects Grid --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.project-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    transition: var(--transition-standard);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.08);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.project-date {
+    font-weight: 700;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.project-card h2 {
+    color: var(--bg-dark);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.project-desc {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.project-stack span {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        padding: 25px;
+    }
 }
 
