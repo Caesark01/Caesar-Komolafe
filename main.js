@@ -39,42 +39,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Simple Intersection Observer for Fade-in Animations
-    const fadeElements = document.querySelectorAll('.expertise-card, .metric-item, .about-highlight-column');
+    // Cascading Animation for Elements
+    const fadeElements = document.querySelectorAll('.expertise-card, .metric-item, .about-highlight-column, .prof-item, .qual-item, .event-card');
     
-    // Add initial opacity styling to them dynamically if JS is running
-    fadeElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
-    });
+    // Add base hidden class to all elements meant to fade
+    fadeElements.forEach(el => el.classList.add('fade-in-hidden'));
     
     const appearOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px"
     };
     
     const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
+        // Filter intersecting entries to stagger them together
+        const intersecting = entries.filter(entry => entry.isIntersecting);
+        
+        intersecting.forEach((entry, index) => {
+            // Apply a staggered delay based on its index in this scroll batch for cascading effect
+            if (entry.target.classList.contains('prof-item') || entry.target.classList.contains('qual-item')) {
+                 entry.target.style.transitionDelay = `${index * 0.08}s`;
             } else {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
+                 entry.target.style.transitionDelay = `${index * 0.15}s`;
             }
+            
+            // Trigger animation
+            entry.target.classList.add('fade-in-visible');
+            entry.target.classList.remove('fade-in-hidden');
+            
+            // Stop observing
+            observer.unobserve(entry.target);
+            
+            // Clean up inline delay after animation so hover states work cleanly
+            setTimeout(() => {
+                entry.target.style.transitionDelay = '0s';
+            }, 1000);
         });
     }, appearOptions);
 
     fadeElements.forEach(fadeEl => {
         appearOnScroll.observe(fadeEl);
     });
-    
-    // Email Button Interaction
-    const btnEmail = document.getElementById('btn-email');
-    if (btnEmail) {
-        btnEmail.addEventListener('click', (e) => {
-            console.log('Contact action initiated');
-        });
-    }
 });
