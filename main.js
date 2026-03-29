@@ -3,6 +3,16 @@
  * Handles UI interactions, scroll effects, and dynamic behaviors.
  */
 
+// =============================================
+// SCROLL TO TOP ON EVERY PAGE LOAD
+// Ensures every page always starts at the top,
+// regardless of where the visitor came from.
+// =============================================
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // Smooth scrolling for Anchor Links
